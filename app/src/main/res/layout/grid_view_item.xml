@@ -2,18 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="movie"-->
-<!--            type="" />-->
-<!--    </data>-->
-<!--    <ImageView-->
-<!--        android:id="@+id/mars_image"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="170dp"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        android:adjustViewBounds="true"-->
-<!--        android:padding="2dp"-->
-<!--        app:imageUrl="@{property.imgSrcUrl}"-->
-<!--        tools:src="@tools:sample/backgrounds/scenic"/>-->
+    <data>
+        <variable
+            name="movie"
+            type="com.example.thirdmovie.network.Movie" />
+    </data>
+    <ImageView
+        android:id="@+id/movie_poster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:padding="2dp"
+        app:imageUrl="@{movie.posterPath}"
+        tools:src="@tools:sample/backgrounds/scenic"/>
 </layout>

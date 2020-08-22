@@ -28,15 +28,17 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "MOVIEDB_KEY", apikeyProperties['MOVIEDB_KEY'])
-            resValue("String", "MOVIEDB_KEY", apikeyProperties['MOVIEDB_KEY'])
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("String", "MOVIEDB_KEY", apikeyProperties['MOVIEDB_KEY'])
-            resValue("String", "MOVIEDB_KEY", apikeyProperties['MOVIEDB_KEY'])
         }
     }
+
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
 }
 
 dependencies {
@@ -48,6 +50,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.room:room-runtime:2.2.5'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -74,4 +77,7 @@ dependencies {
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
 
+    // request interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
 }
