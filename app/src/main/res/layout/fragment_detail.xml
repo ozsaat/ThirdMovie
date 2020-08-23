@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.example.thirdmovie.detail.DetailViewModel" />
+        <variable
+            name="movie"
+            type="com.example.thirdmovie.network.Movie" />
     </data>
 
     <ScrollView
@@ -16,8 +19,100 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/main_photo_image"
+                android:layout_width="match_parent"
+                android:layout_height="203dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.selectedMovie.backdropPath}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/releaseDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:text="Release date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.064"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_photo_image" />
+
+            <TextView
+                android:id="@+id/movieReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                app:text="@{viewModel.selectedMovie.releaseDate}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.224"
+                app:layout_constraintStart_toEndOf="@+id/releaseDateTitle"
+                app:layout_constraintTop_toBottomOf="@+id/main_photo_image"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/ratingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Rating"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/movieRating"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/releaseDateTitle"
+                app:layout_constraintTop_toBottomOf="@+id/releaseDateTitle"
+                app:layout_constraintVertical_bias="0.0" />
+
+<!--            Use Transformations to format the strings-->
+            <TextView
+                android:id="@+id/movieRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Temp rating text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.441"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movieReleaseDate" />
+
+            <TextView
+                android:id="@+id/overviewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:text="Overview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.058"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingTitle" />
+
+            <TextView
+                android:id="@+id/movieOverview"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:text="@{viewModel.selectedMovie.overview}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.181"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/overviewTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -2,7 +2,6 @@ package com.example.thirdmovie
 
 import android.view.View
 import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -20,7 +19,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?) {
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
         Glide.with(imgView.context)
-            .load("https://image.tmdb.org/t/p/w342/$imgUrl")
+            .load("https://image.tmdb.org/t/p/original/$imgUrl")
             .apply(
                 RequestOptions()
                 .placeholder(R.drawable.loading_animation)
