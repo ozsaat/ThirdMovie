@@ -77,7 +77,17 @@ dependencies {
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
 
-    // request interceptor
+    // Request interceptor
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
+    // Paging
+    implementation "androidx.paging:paging-runtime:$version_paging"
+    testImplementation "androidx.paging:paging-common:$version_paging"
+    implementation "androidx.paging:paging-rxjava2:$version_paging"
+    implementation "androidx.paging:paging-guava:$version_paging"
+
+    // WorkManager
+    implementation "android.arch.work:work-runtime-ktx:$version_work"
+
 }

@@ -7,12 +7,34 @@
             name="movie"
             type="com.example.thirdmovie.network.Movie" />
     </data>
-    <ImageView
-        android:id="@+id/movie_poster"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:padding="2dp"
-        app:imageUrl="@{movie.posterPath}"
-        tools:src="@tools:sample/backgrounds/scenic"/>
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:padding="2dp"
+            app:imageUrl="@{movie.backdropPath}"
+            tools:src="@tools:sample/backgrounds/scenic"/>
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="15dp"
+            android:elevation="4dp"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.038"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.959"
+            app:text="@{movie.title}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
