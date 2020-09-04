@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 import com.example.thirdmovie.network.Movie
 
 @Entity
-data class DatabasePopularMovies constructor(
-    val voteCount: Int,
+data class MovieEntity(
     @PrimaryKey
     val id: Int,
+    val voteCount: Int,
     val voteAverage: Double,
     val title: String,
     val popularity: Double,
@@ -18,7 +18,7 @@ data class DatabasePopularMovies constructor(
     val releaseDate: String
 )
 
-fun List<DatabasePopularMovies>.asDomainModel(): List<Movie> {
+fun List<MovieEntity>.asDomainModel(): List<Movie> {
     return map {
         Movie(
             voteCount = it.voteCount,
@@ -33,3 +33,5 @@ fun List<DatabasePopularMovies>.asDomainModel(): List<Movie> {
         )
     }
 }
+
+fun Movie.toEntity() = MovieEntity(id, voteCount, voteAverage, title, popularity, posterPath, backdropPath, overview, releaseDate)

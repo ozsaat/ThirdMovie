@@ -4,17 +4,18 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.thirdmovie.network.Movie
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieDao {
-    @Query("select * from Movie")
-    fun getMovies(): LiveData<List<Movie>>
+    @Query("select * from MovieEntity")
+    fun getMovies(): Flow<List<MovieEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(movies: List<Movie>)
+    fun insertAll(movies: List<MovieEntity>)
 }
 
-@Database(entities = [Movie::class], version = 1)
+@Database(entities = [MovieEntity::class], version = 1)
 abstract class MovieDatabase : RoomDatabase() {
     abstract val movieDao : MovieDao
 }

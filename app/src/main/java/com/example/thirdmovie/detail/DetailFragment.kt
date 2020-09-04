@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import com.example.thirdmovie.R
 import com.example.thirdmovie.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
