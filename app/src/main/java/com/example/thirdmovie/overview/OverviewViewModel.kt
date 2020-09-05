@@ -24,11 +24,6 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
     val status: LiveData<MovieApiStatus>
     get() = _status
 
-//    private val _movies = MutableLiveData<List<Movie>>()
-//
-//    val movies: LiveData<List<Movie>>
-//    get() = _movies
-
     private val _navigateToSelectedMovie = MutableLiveData<Movie>()
 
     val navigateToSelectedMovie: LiveData<Movie>
@@ -40,7 +35,12 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
         getMovieResponse(MovieSortFilter.POPULAR)
     }
 
-    fun getMovies() = repository.getMovies().asLiveData()
+//    fun getMovies() = repository.getMovies().asLiveData()
+
+    private val _movies = MutableLiveData<LiveData<List<Movie>>>()
+
+    val movies: LiveData<LiveData<List<Movie>>>
+    get() = _movies
 
     private fun getMovieResponse(filter: MovieSortFilter) {
         viewModelScope.launch {
@@ -50,6 +50,7 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
                 _status.value = MovieApiStatus.LOADING
                 val listResult = getMoviesDeferred.await()
                 repository.insert(listResult.results)
+                _movies.value = repository.getMovies().asLiveData()
                 _status.value = MovieApiStatus.DONE
 
             } catch (e: java.lang.Exception) {
