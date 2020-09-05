@@ -12,7 +12,7 @@ interface MovieDao {
     fun getMovies(): Flow<List<MovieEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(movies: List<MovieEntity>)
+    suspend fun insertAll(movies: List<MovieEntity>)
 }
 
 @Database(entities = [MovieEntity::class], version = 1)
@@ -27,7 +27,8 @@ fun getDatabase(context: Context): MovieDatabase {
         if (!::INSTANCE.isInitialized) {
             INSTANCE = Room.databaseBuilder(context.applicationContext,
             MovieDatabase::class.java,
-            "movies").build()
+            "movies")
+                .build()
         }
     }
     return INSTANCE

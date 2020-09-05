@@ -11,6 +11,7 @@ import com.example.thirdmovie.repository.MovieRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 enum class MovieApiStatus { LOADING, ERROR, DONE }
@@ -50,8 +51,6 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
                 val listResult = getMoviesDeferred.await()
                 repository.insert(listResult.results)
                 _status.value = MovieApiStatus.DONE
-//                val listOfMovies: List<Movie> = listResult.results
-//                _movies.value = listOfMovies
 
             } catch (e: java.lang.Exception) {
                 _status.value = MovieApiStatus.ERROR
