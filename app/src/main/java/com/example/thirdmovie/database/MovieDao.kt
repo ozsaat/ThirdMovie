@@ -1,9 +1,7 @@
 package com.example.thirdmovie.database
 
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.thirdmovie.network.Movie
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,7 +15,7 @@ interface MovieDao {
 
 @Database(entities = [MovieEntity::class], version = 1)
 abstract class MovieDatabase : RoomDatabase() {
-    abstract val movieDao : MovieDao
+    abstract val movieDao: MovieDao
 }
 
 private lateinit var INSTANCE: MovieDatabase
@@ -25,9 +23,11 @@ private lateinit var INSTANCE: MovieDatabase
 fun getDatabase(context: Context): MovieDatabase {
     synchronized(MovieDatabase::class.java) {
         if (!::INSTANCE.isInitialized) {
-            INSTANCE = Room.databaseBuilder(context.applicationContext,
-            MovieDatabase::class.java,
-            "movies")
+            INSTANCE = Room.databaseBuilder(
+                context.applicationContext,
+                MovieDatabase::class.java,
+                "movies"
+            )
                 .build()
         }
     }
